@@ -1,0 +1,76 @@
+/* Custom font for logo */
+@font-face {
+    font-family: 'LogoFont';
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+    font-family: 'Playfair Display', serif;
+}
+
+.logo-font {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Background patterns */
+.hero-bg {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.leaf-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 10 C30 10 15 25 15 45 C15 65 30 80 50 80 C70 80 85 65 85 45 C85 25 70 10 50 10 Z" fill="rgba(16,185,129,0.07)"/></svg>') repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Card hover effect */
+.card-hover {
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card-hover.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.25);
+    border-color: #10b981;
+}
+
+/* Scan QR animation */
+.scan-qr {
+    animation: scan 4s infinite ease-in-out;
+}
+
+@keyframes scan {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 1.8s ease-out;
+}
+
+/* Section fade-in */
+.section-fade {
+    transition: all 0.9s ease-out;
+}
+
+/* Chatbot toggle (placeholder) */
+#chat-window {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+#chat-window:not(.hidden) {
+    transform: scale(1);
+    opacity: 1;
+}
