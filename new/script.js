@@ -1,3 +1,24 @@
+const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.innerHTML = theme === 'dark' 
+                ? '<i class="fa-solid fa-moon"></i>' 
+                : '<i class="fa-solid fa-sun"></i>';
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
 // Page navigation
 function showScan() {
     document.getElementById('home-view').classList.add('hidden');
@@ -110,3 +131,4 @@ window.onload = () => {
     const scanBtn = document.querySelector('button[onclick="showScan()"]');
     if (scanBtn) scanBtn.style.animation = 'pulse 3s infinite';
 };
+

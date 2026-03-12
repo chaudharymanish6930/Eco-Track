@@ -1,4 +1,30 @@
 /* Custom font for logo */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+
+        :root {
+            --primary: #10b981;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --primary: #34d399;
+            --bg: #0f172a;
+            --text: #e2e8f0;
+            --card: #1e293b;
+            --border: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+
 @font-face {
     font-family: 'LogoFont';
     src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -15,6 +41,9 @@
     position: relative;
     overflow: hidden;
 }
+[data-theme="dark"] .hero-bg {
+        background: linear-gradient(135deg, #320630 0%, #065f46 100%);
+    }
 
 .leaf-bg::before {
     content: '';
@@ -40,7 +69,7 @@
 .card-hover:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.25);
-    border-color: #10b981;
+    border-color: #071e16;
 }
 
 /* Scan QR animation */
@@ -64,13 +93,94 @@
 }
 
 /* Chatbot toggle (placeholder) */
-#chat-window {
-    transform: scale(0.95);
-    opacity: 0;
-    transition: all 0.25s ease;
-}
+.chat-window {
+            transition: all 0.3s ease;
+        }
 
-#chat-window:not(.hidden) {
-    transform: scale(1);
-    opacity: 1;
-}
+        .chat-bubble-user {
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+        .chat-bubble-bot {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 0;
+        }
+
+        /* Floating chat button */
+        #chat-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(16,185,129,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #chat-btn:hover { transform: scale(1.1); }
+
+        /* Chat container */
+        #chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 380px;
+            height: 520px;
+            background: var(--card);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            z-index: 9999;
+            border: 1px solid var(--border);
+        }
+
+        #chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #chat-input-area {
+            padding: 16px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            outline: none;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] #chat-btn { box-shadow: 0 10px 25px rgba(52,211,153,0.4); }
